@@ -26,7 +26,7 @@ CMD node index.js
 # Pour exécuter le code, il faut dire à Docker d'exécuter l'image : "docker run hello-app"
 # Pour lister les conteneurs en cours d'exécution, utiliser la commande "docker ps"
 
-# Si l'appli ne contient qu'un console.log(), par ex, elle se termine après l'exécutiion de cette commande, elle quitte, et le conteneur n'est donc pas visible dans les processus Docker
+# Si l'appli ne contient qu'un console.log(), par ex, elle se termine après l'exécution de cette commande, elle quitte, et le conteneur n'est donc pas visible dans les processus Docker
 # Pour voir le processus, on peut remplacer le console.log() par un setInterval().
 
 # ATTENTION : Quand on modifie le code de l'app, il faut qu'il soit à nouveau copié dans l'image. Donc le setInterval ne sera exécuté que si on refait la commande "docker build -t hello-app ."
@@ -39,3 +39,23 @@ CMD node index.js
 # L'option -f permet d'afficher les logs en continu.
 # On peut récupérer la main en faisant Ctrl+C.
 # Cela n'interrompt pas l'exécution du conteneur.
+
+# PARTAGER L'APP SUR DOCKERHUB
+
+# Un des intérêts de Docker est de pouvoir partager une application avec n'importe qui disposant de Docker, sans que la personne n'ait besoin de faire la moindre installation.
+# Elle aura juste à récupérer l'image avec la commande "docker pull" puis la démarrer avec "docker run".
+
+# Utiliser "docker login" pour se connecter à son compte Docker
+
+# Puis taguer l'image avec son DockerID:
+# Afin de pouvoir pousser l'image sur DockerHub il faut d'abord la compiler :"docker build -t <username>/hello-app ."
+# Puis la pousser : "docker push <username>/hello-app"
+
+#  vérifier sur DockerHub que l'image a bien été poussée : https://hub.docker.com/repository/docker/<username>/hello-app.
+
+# RECUPERER L'IMAGE SUR UNE AUTRE MACHINE
+# "docker pull <username>/hello-app"
+
+# Attention : le poids d'une image n'est pas anodin !
+# Chaque image embarque le poids de ses applicatifs (ici alpine et NodeJs soit environ 100 Mo)
+# Après cette quête pense à effacer les images qui ne te seront plus utiles avec la commande docker image rm
