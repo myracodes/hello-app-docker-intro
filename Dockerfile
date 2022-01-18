@@ -34,3 +34,8 @@ CMD node index.js
 # Possible de le faire en une seule commande avec le && operator : "docker build -t hello-app . && docker run hello-app"
 
 # Pour arrêter le processus, il faut ouvrir un autre terminal, faire 'docker ps' pour trouver tous les conteneurs, copier l'id du conteneur, puis run "docker stop <id du conteneur>"
+
+# Pour afficher les logs : "docker logs -f containerId"
+# L'option -f permet d'afficher les logs en continu.
+# On peut récupérer la main en faisant Ctrl+C.
+# Cela n'interrompt pas l'exécution du conteneur.
